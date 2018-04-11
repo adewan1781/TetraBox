@@ -10,7 +10,8 @@ import cucumber.api.junit.Cucumber;
 		features={"src/test/java/features"},
 		glue={"com.stepDefinations"},
 		tags="@login,@createfolder",
-		plugin ={"html:target/htmlreports/report.html"}
+		plugin ={"pretty","html:target/htmlreports/report.html","json:target/report.json" },
+		monochrome = true
 		)
 public class TestRunner {
 
