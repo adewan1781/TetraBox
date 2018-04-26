@@ -9,7 +9,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features={"src/test/java/features"},
 		glue={"com.stepDefinations"},
-		tags="@login,@createfolder",
+		tags="@login,@createfolder,@upload",
+//		tags="@upload",
 		plugin ={"pretty","html:target/htmlreports/report.html","json:target/report.json" },
 		monochrome = true
 		)

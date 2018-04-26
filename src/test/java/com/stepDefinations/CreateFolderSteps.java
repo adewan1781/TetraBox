@@ -66,10 +66,18 @@ public class CreateFolderSteps {
 	   create.click();
 	}
 
-	@When("^select the newly created folder row$")
-	public void selectFolderRow() throws Throwable {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='file-list-item-wrapper' and @role='row' and .//a[contains(text(),'Dcfolder')]]/span[contains(text(),'Files')]")));
-		WebElement selectElement = new WebDriverWait(driver,60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='file-list-item-wrapper' and @role='row' and .//a[contains(text(),'Dcfolder')]]")));
+	@When("^select the newly created ?(|folder) row$")
+	public void selectFolderRow(String folder) throws Throwable {
+		System.out.println("val is  "+folder);
+		
+		WebElement selectElement;
+		if(!folder.equals("")){
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='file-list-item-wrapper' and @role='row' and .//a[contains(text(),'Dcfolder')]]/span[contains(text(),'Files')]")));
+			selectElement = new WebDriverWait(driver,60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='file-list-item-wrapper' and @role='row' and .//a[contains(text(),'Dcfolder')]]")));
+		}else
+			selectElement= new WebDriverWait(driver,60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='file-list-item-wrapper' and @role='row' and .//a[contains(text(),'java basics.txt')]]")));
+		
+		
 		selectElement.click();
 		
 	}
